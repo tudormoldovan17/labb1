@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import CarDetails from "./domain/car/CarDetails";
+import ListCars from "./domain/car/ListCars";
 import './App.css';
+import AddCar from "./domain/car/AddCar";
+import UpdateCar from "./domain/car/UpdateCar";
+import DeleteCar from "./domain/car/DeleteCar";
+import CarChart from "./domain/car/CarChart";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Routes>
+            <Route path="/" element={<ListCars />} />
+            <Route path="/car/:id" element={<CarDetails />} />
+            <Route path="/addcar" element={<AddCar />} />
+            <Route path="/updatecar/:id" element={<UpdateCar />} />
+            <Route path="/deletecar/:id" element={<DeleteCar />} />
+            <Route path="/carchart" element={<CarChart />} />
+        </Routes>
+      </Router>
   );
-}
+};
 
 export default App;
